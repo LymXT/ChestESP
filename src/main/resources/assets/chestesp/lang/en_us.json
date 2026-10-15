@@ -1,0 +1,7 @@
+{
+  "key.chestesp.toggle": "Toggle Chest ESP",
+  "key.category.chestesp": "Chest ESP",
+  "message.chestesp.prefix": "[ChestESP] ",
+  "message.chestesp.enabled": "Storage ESP: §aENABLED",
+  "message.chestesp.disabled": "Storage ESP: §cDISABLED"
+}

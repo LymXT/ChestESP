@@ -1,0 +1,7 @@
+{
+  "key.chestesp.toggle": "Переключить Chest ESP",
+  "key.category.chestesp": "Chest ESP",
+  "message.chestesp.prefix": "[ChestESP] ",
+  "message.chestesp.enabled": "Подсветка хранилищ: §aВКЛЮЧЕНА",
+  "message.chestesp.disabled": "Подсветка хранилищ: §cВЫКЛЮЧЕНА"
+}

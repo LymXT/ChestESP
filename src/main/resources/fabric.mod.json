@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "id": "chestesp",
+  "version": "3.0",
+  "name": "ChestESP",
+  "description": "Клиентский мод для Minecraft 26.3 на Fabric: подсветка сундуков, эндер-сундуков, шалкеров всех цветов и вагонеток с сундуком сквозь стены.",
+  "authors": [
+    "LymXT"
+  ],
+  "contact": {
+    "homepage": "https://github.com/LymXT/ChestESP",
+    "sources": "https://github.com/LymXT/ChestESP",
+    "issues": "https://github.com/LymXT/ChestESP/issues"
+  },
+  "license": "MIT",
+  "icon": "assets/chestesp/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "com.example.mysecondmod.ChestESPClient"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.19.5",
+    "minecraft": "~26.3",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
+}
