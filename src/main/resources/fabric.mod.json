@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "chestesp",
-  "version": "3.0",
+  "version": "3.1",
   "name": "ChestESP",
   "description": "Клиентский мод для Minecraft 26.3 на Fabric: подсветка сундуков, эндер-сундуков, шалкеров всех цветов и вагонеток с сундуком сквозь стены.",
   "authors": [

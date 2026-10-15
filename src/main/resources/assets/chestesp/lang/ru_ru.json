@@ -1,7 +1,14 @@
 {
+  "modmenu.nameTranslation.chestesp": "Chest ESP",
+  "modmenu.descriptionTranslation.chestesp": "Подсветка сундуков, сундуков-ловушек, эндер-сундуков, шалкеров и вагонеток с сундуком сквозь стены.",
   "key.chestesp.toggle": "Переключить Chest ESP",
   "key.category.chestesp": "Chest ESP",
   "message.chestesp.prefix": "[ChestESP] ",
   "message.chestesp.enabled": "Подсветка хранилищ: §aВКЛЮЧЕНА",
-  "message.chestesp.disabled": "Подсветка хранилищ: §cВЫКЛЮЧЕНА"
+  "message.chestesp.disabled": "Подсветка хранилищ: §cВЫКЛЮЧЕНА",
+  "category.chestesp.chest": "Обычный сундук",
+  "category.chestesp.trapped_chest": "Сундук-ловушка",
+  "category.chestesp.ender_chest": "Эндер-сундук",
+  "category.chestesp.shulker_box": "Ящик шалкера",
+  "category.chestesp.minecart_chest": "Вагонетка с сундуком"
 }

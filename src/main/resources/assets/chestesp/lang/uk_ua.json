@@ -1,0 +1,14 @@
+{
+  "modmenu.nameTranslation.chestesp": "Chest ESP",
+  "modmenu.descriptionTranslation.chestesp": "Підсвічування скринь, скринь-пасток, ендер-скринь, скринь шалкера та вагонеток зі скринею крізь стіни.",
+  "key.chestesp.toggle": "Перемкнути Chest ESP",
+  "key.category.chestesp": "Chest ESP",
+  "message.chestesp.prefix": "[ChestESP] ",
+  "message.chestesp.enabled": "Підсвічування сховищ: §aУВІМКНЕНО",
+  "message.chestesp.disabled": "Підсвічування сховищ: §cВИМКНЕНО",
+  "category.chestesp.chest": "Звичайна скриня",
+  "category.chestesp.trapped_chest": "Скриня-пастка",
+  "category.chestesp.ender_chest": "Ендер-скриня",
+  "category.chestesp.shulker_box": "Скриня шалкера",
+  "category.chestesp.minecart_chest": "Вагонетка зі скринею"
+}

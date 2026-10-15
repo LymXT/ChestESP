@@ -1,7 +1,14 @@
 {
+  "modmenu.nameTranslation.chestesp": "Chest ESP",
+  "modmenu.descriptionTranslation.chestesp": "Through-wall outline ESP highlighting for chests, ender chests, shulker boxes, and chest minecarts.",
   "key.chestesp.toggle": "Toggle Chest ESP",
   "key.category.chestesp": "Chest ESP",
   "message.chestesp.prefix": "[ChestESP] ",
   "message.chestesp.enabled": "Storage ESP: §aENABLED",
-  "message.chestesp.disabled": "Storage ESP: §cDISABLED"
+  "message.chestesp.disabled": "Storage ESP: §cDISABLED",
+  "category.chestesp.chest": "Regular Chest",
+  "category.chestesp.trapped_chest": "Trapped Chest",
+  "category.chestesp.ender_chest": "Ender Chest",
+  "category.chestesp.shulker_box": "Shulker Box",
+  "category.chestesp.minecart_chest": "Chest Minecart"
 }

@@ -1,4 +1,4 @@
-# ChestESP v3.0 — Fabric Mod for Minecraft 26.3
+# ChestESP v3.1 — Fabric Mod for Minecraft 26.3
 
 [![Minecraft 26.3](https://img.shields.io/badge/Minecraft-26.3-brightgreen.svg)](https://minecraft.net/)
 [![Fabric API](https://img.shields.io/badge/Fabric-0.163.0+26.3-blue.svg)](https://fabricmc.net/)
@@ -44,7 +44,7 @@
 ```text
 ChestESP/
 ├── build.gradle                                    # Loom 1.18.4, Fabric API 0.163.0+26.3
-├── gradle.properties                               # Version 3.0, archives_base_name = ChestESP
+├── gradle.properties                               # Version 3.1, archives_base_name = ChestESP
 ├── settings.gradle                                 # rootProject.name = 'ChestESP'
 ├── LICENSE                                         # MIT License
 └── src/
@@ -55,11 +55,12 @@ ChestESP/
         │       ├── ESPCategory.java                # Enum of storage categories & ARGB palette
         │       └── RenderUtils.java                # Bounding box geometry & Gizmo renderer
         └── resources/
-            ├── fabric.mod.json                     # Mod metadata (id: "chestesp", version: "3.0")
+            ├── fabric.mod.json                     # Mod metadata (id: "chestesp", version: "3.1")
             └── assets/chestesp/
                 ├── icon.png                        # 128x128 mod icon
                 └── lang/
                     ├── en_us.json                  # English localization
+                    ├── uk_ua.json                  # Ukrainian localization
                     └── ru_ru.json                  # Russian localization
 ```
 
@@ -83,7 +84,7 @@ Run Gradle Wrapper in the project directory:
 
 The compiled mod JAR will be located at:
 ```text
-build/libs/ChestESP-3.0.jar
+build/libs/ChestESP-3.1.jar
 ```
 
 ---
