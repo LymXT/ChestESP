@@ -11,28 +11,28 @@ import net.minecraft.world.level.block.state.properties.ChestType;
 import net.minecraft.world.phys.AABB;
 
 /**
- * Утилитарный класс для рендеринга AABB-объемов сквозь препятствия в Minecraft 26.3 с использованием Gizmos API.
+ * Utility class for rendering AABB volumes through obstacles in Minecraft 26.3 using the Gizmos API.
  */
 public class RenderUtils {
 
     /**
-     * Отрисовывает подсветку AABB-объема сквозь препятствия с цветным контуром и полупрозрачным заполнением.
+     * Renders an AABB highlight through obstacles with a colored outline and translucent face fill.
      *
-     * @param aabb     ограничивающий объем (bounding box) в мировых координатах
-     * @param category категория объекта с соответствующими цветами
+     * @param aabb     the bounding box in world coordinates
+     * @param category the object category defining outline and fill colors
      */
     public static void renderGizmo(AABB aabb, ESPCategory category) {
         float strokeWidth = 2.0f;
 
-        // GizmoStyle объединяет контурные линии и прозрачные грани,
-        // а setAlwaysOnTop() отключает тест глубины, делая бокс видимым сквозь стены.
+        // GizmoStyle combines outline strokes and translucent face fills,
+        // while setAlwaysOnTop() disables depth testing to ensure through-wall visibility.
         Gizmos.cuboid(aabb, GizmoStyle.strokeAndFill(category.getStrokeColor(), strokeWidth, category.getFillColor()))
               .setAlwaysOnTop();
     }
 
     /**
-     * Вычисляет точный AABB-объем сундука (обычного или сундука-ловушки) в мировых координатах
-     * с учетом одинарных и соединенных двойных сундуков.
+     * Calculates the exact AABB bounding box of a chest (regular or trapped) in world coordinates,
+     * accounting for single and connected double chests.
      */
     public static AABB getChestBoundingBox(Level level, BlockPos pos) {
         BlockState state = level.getBlockState(pos);
@@ -62,7 +62,7 @@ public class RenderUtils {
     }
 
     /**
-     * Вычисляет AABB-объем эндер-сундука (всегда одинарный сундук).
+     * Calculates the AABB bounding box of an ender chest (always a single chest volume).
      */
     public static AABB getEnderChestBoundingBox(BlockPos pos) {
         return new AABB(
@@ -72,7 +72,7 @@ public class RenderUtils {
     }
 
     /**
-     * Вычисляет AABB-объем ящика шалкера (полный кубический блок 1x1x1).
+     * Calculates the AABB bounding box of a shulker box (full 1x1x1 cube block).
      */
     public static AABB getShulkerBoundingBox(BlockPos pos) {
         return new AABB(pos);

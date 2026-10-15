@@ -26,20 +26,21 @@ import net.minecraft.world.phys.Vec3;
 import java.util.Map;
 
 /**
- * Точка входа клиентского мода ChestESP (v2.0) для Fabric 26.3.
- * Расширенный ChestESP с подсветкой сундуков, сундуков-ловушек, эндер-сундуков, всех цветов шалкеров и вагонеток с сундуком сквозь препятствия.
+ * Client-side entry point for the ChestESP mod (v3.1) for Fabric 26.3.
+ * Extended ChestESP featuring through-wall highlight outlines for chests, trapped chests,
+ * ender chests, all shulker box colors, and chest minecarts.
  */
 public class ChestESPClient implements ClientModInitializer {
 
     public static final String MOD_ID = "chestesp";
 
-    /** Горячая клавиша переключения ESP (по умолчанию клавиша 'V') */
+    /** Key binding for toggling ESP (bound to 'V' by default). */
     private static KeyMapping toggleKey;
 
-    /** Текущее состояние работы ESP */
+    /** Current active state of the ESP. */
     private static boolean enabled = true;
 
-    /** Максимальный радиус поиска (64 блока) */
+    /** Maximum search radius (64 blocks). */
     public static final double MAX_RADIUS = 64.0;
     public static final double MAX_RADIUS_SQ = MAX_RADIUS * MAX_RADIUS;
 
@@ -53,7 +54,7 @@ public class ChestESPClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-        // 1. Регистрация бинда клавиши в категории MISC
+        // 1. Register key binding in the MISC category
         toggleKey = KeyMappingHelper.registerKeyMapping(new KeyMapping(
                 "key.chestesp.toggle",
                 InputConstants.Type.KEYBOARD,
@@ -61,7 +62,7 @@ public class ChestESPClient implements ClientModInitializer {
                 KeyMapping.Category.MISC
         ));
 
-        // 2. Обработка нажатия клавиши в цикле тика клиента
+        // 2. Handle key presses during the client tick cycle
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             while (toggleKey.consumeClick()) {
                 enabled = !enabled;
@@ -75,7 +76,7 @@ public class ChestESPClient implements ClientModInitializer {
             }
         });
 
-        // 3. Подписка на рендеринг через Fabric LevelRenderEvents
+        // 3. Register render callback via Fabric LevelRenderEvents
         LevelRenderEvents.BEFORE_GIZMOS.register(context -> {
             if (!enabled) return;
 
@@ -87,9 +88,9 @@ public class ChestESPClient implements ClientModInitializer {
             Vec3 playerPos = player.position();
             int playerChunkX = player.getBlockX() >> 4;
             int playerChunkZ = player.getBlockZ() >> 4;
-            int chunkRadius = (int) Math.ceil(MAX_RADIUS / 16.0); // 4 чанка вокруг игрока
+            int chunkRadius = (int) Math.ceil(MAX_RADIUS / 16.0); // 4 chunks around the player
 
-            // 1. Сканируем BlockEntity в загруженных чанках вокруг игрока
+            // 1. Scan block entities in loaded chunks surrounding the player
             for (int cx = playerChunkX - chunkRadius; cx <= playerChunkX + chunkRadius; cx++) {
                 for (int cz = playerChunkZ - chunkRadius; cz <= playerChunkZ + chunkRadius; cz++) {
                     LevelChunk chunk = level.getChunkSource().getChunk(cx, cz, ChunkStatus.FULL, false);
@@ -101,22 +102,22 @@ public class ChestESPClient implements ClientModInitializer {
                         double distSq = pos.distToCenterSqr(playerPos);
                         if (distSq > MAX_RADIUS_SQ) continue;
 
-                        // Сундуки-ловушки (проверяем перед ChestBlockEntity, так как TrappedChestBlockEntity наследует ChestBlockEntity)
+                        // Trapped chests (check before ChestBlockEntity as TrappedChestBlockEntity extends ChestBlockEntity)
                         if (blockEntity instanceof TrappedChestBlockEntity) {
                             AABB aabb = RenderUtils.getChestBoundingBox(level, pos);
                             RenderUtils.renderGizmo(aabb, ESPCategory.TRAPPED_CHEST);
                         }
-                        // Обычные сундуки
+                        // Regular chests
                         else if (blockEntity instanceof ChestBlockEntity) {
                             AABB aabb = RenderUtils.getChestBoundingBox(level, pos);
                             RenderUtils.renderGizmo(aabb, ESPCategory.CHEST);
                         }
-                        // Эндер-сундуки
+                        // Ender chests
                         else if (blockEntity instanceof EnderChestBlockEntity) {
                             AABB aabb = RenderUtils.getEnderChestBoundingBox(pos);
                             RenderUtils.renderGizmo(aabb, ESPCategory.ENDER_CHEST);
                         }
-                        // Шалкеры всех цветов (все окрашенные и неокрашенные используют ShulkerBoxBlockEntity)
+                        // Shulker boxes of all colors (both dyed and undyed use ShulkerBoxBlockEntity)
                         else if (blockEntity instanceof ShulkerBoxBlockEntity) {
                             AABB aabb = RenderUtils.getShulkerBoundingBox(pos);
                             RenderUtils.renderGizmo(aabb, ESPCategory.SHULKER_BOX);
@@ -125,7 +126,7 @@ public class ChestESPClient implements ClientModInitializer {
                 }
             }
 
-            // 2. Сканируем сущности (Entity) — вагонетки с сундуком (ChestMinecartEntity / MinecartChest)
+            // 2. Scan entities for rendering — chest minecarts (MinecartChest)
             for (Entity entity : level.entitiesForRendering()) {
                 if (entity instanceof MinecartChest minecart) {
                     if (minecart.position().distanceToSqr(playerPos) <= MAX_RADIUS_SQ) {
